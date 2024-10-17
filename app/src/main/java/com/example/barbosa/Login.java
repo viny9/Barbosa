@@ -26,7 +26,7 @@ public class Login extends Activity {
         loginvo.setLogin(login.getText().toString());
         loginvo.setLogin(senha.getText().toString());
 
-        if(loginvo.getLogin().equals("Paulo")&& loginvo.getSenha().equals("980428")){
+        if(loginvo.getLogin().equals("PauloHenrique")&& loginvo.getSenha().equals("980428")){
             Intent menu = new Intent(this,Menu.class);
             startActivity(menu);
 
