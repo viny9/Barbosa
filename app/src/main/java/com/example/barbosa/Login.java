@@ -31,11 +31,6 @@ public class Login extends Activity {
             startActivity(menu);
 
         }
-        else{
-            TextView erro = findViewById(R.id.alertaLogin);
-            erro.setText("Erro de Autentificação");
-        }
-
 
 
 
