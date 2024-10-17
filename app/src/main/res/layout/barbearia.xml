@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Nome da Barbearia -->
+    <TextView
+        android:id="@+id/tvBarberShopName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome da Barbearia"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Endereço da Barbearia -->
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Endereço da Barbearia"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/tvBarberShopName"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Equipe de Barbeiros -->
+    <TextView
+        android:id="@+id/tvBarbers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Equipe de Barbeiros"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/tvAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- LinearLayout para os barbeiros e botões -->
+    <LinearLayout
+        android:id="@+id/llBarberList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/tvBarbers"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Exemplo de Barbeiro 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/tvBarber1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Barbeiro 1"
+                android:layout_weight="1"
+                android:textSize="16sp"/>
+
+            <Button
+                android:id="@+id/btnSchedule1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Agendar"/>
+
+        </LinearLayout>
+
+        <!-- Exemplo de Barbeiro 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/tvBarber2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Barbeiro 2"
+                android:layout_weight="1"
+                android:textSize="16sp"/>
+
+            <Button
+                android:id="@+id/btnSchedule2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Agendar"/>
+        </LinearLayout>
+
+        <!-- Adicione mais barbeiros conforme necessário -->
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

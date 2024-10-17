@@ -92,15 +92,19 @@
             android:textColor="#000000"
             android:textSize="14sp" />
 
+
         <TextView
-            android:id="@+id/linkCadastro"
+            android:id="@+id/voltarLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="4dp"
             android:text="clique aqui para voltar"
-            android:textColor="#333333"
-            android:textSize="14sp" />
+            android:textColor="@android:color/holo_blue_dark"
+            android:clickable="true"
+            android:textSize="16sp"
+            android:padding="16dp"
+            android:minHeight="48dp"
+            android:minWidth="48dp"
+            />
 
 
 

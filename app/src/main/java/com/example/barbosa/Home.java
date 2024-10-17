@@ -7,13 +7,13 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-public class Menu extends Activity {
+public class Home extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
-        setContentView(R.layout.menu);
+        setContentView(R.layout.home);
     }
 
     public void cadastrar(View view){
