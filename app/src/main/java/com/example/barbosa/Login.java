@@ -17,7 +17,6 @@ public class Login extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        // Configurar o link para a página de cadastro
         TextView cadastroLink = findViewById(R.id.cadastroLink);
         cadastroLink.setOnClickListener(new View.OnClickListener() {
             @Override
