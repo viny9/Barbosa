@@ -2,100 +2,87 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <!-- Nome da Barbearia -->
-    <TextView
-        android:id="@+id/tvBarberShopName"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/barberShopImg"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nome da Barbearia"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="8dp"/>
+        android:scaleType="fitXY"
+        android:src="@drawable/donalcides_1"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Endereço da Barbearia -->
-    <TextView
-        android:id="@+id/tvAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Endereço da Barbearia"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/tvBarberShopName"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="16dp"/>
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="10dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/icon"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Equipe de Barbeiros -->
+
     <TextView
-        android:id="@+id/tvBarbers"
-        android:layout_width="wrap_content"
+        android:id="@+id/baberShopName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Equipe de Barbeiros"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="100dp"
+        android:text="Teste"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/tvAddress"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="8dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/backButton" />
 
-    <!-- LinearLayout para os barbeiros e botões -->
     <LinearLayout
-        android:id="@+id/llBarberList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/baberShopName">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="5dp"
+            android:contentDescription="TODO"
+            android:src="@drawable/location_icon" />
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="SEP Sul Trecho 713/913, SHCS. Brasília - DF, 70390-135"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/tvBarbers"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/barberShopImg">
 
-        <!-- Exemplo de Barbeiro 1 -->
-        <LinearLayout
+        <TextView
+            android:id="@+id/staffTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="16dp">
+            android:layout_marginTop="10dp"
+            android:text="@string/barbearia_equipe"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tvBarber1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Barbeiro 1"
-                android:layout_weight="1"
-                android:textSize="16sp"/>
-
-            <Button
-                android:id="@+id/btnSchedule1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Agendar"/>
-
-        </LinearLayout>
-
-        <!-- Exemplo de Barbeiro 2 -->
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/barbersList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="16dp">
-
-            <TextView
-                android:id="@+id/tvBarber2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Barbeiro 2"
-                android:layout_weight="1"
-                android:textSize="16sp"/>
-
-            <Button
-                android:id="@+id/btnSchedule2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Agendar"/>
-        </LinearLayout>
-
-        <!-- Adicione mais barbeiros conforme necessário -->
+            android:layout_marginTop="10dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

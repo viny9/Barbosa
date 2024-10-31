@@ -51,7 +51,7 @@ public class Login extends Activity {
         loginvo.setSenha(senha.getText().toString());
 
         if (loginvo.getLogin().equals("phdeoliveirra@gmail.com") && loginvo.getSenha().equals("980428")) {
-            Intent home = new Intent(this, Home.class);
+            Intent home = new Intent(this, Barbearia.class);
             startActivity(home);
         } else {
             TextView erro = findViewById(R.id.alertaLogin);
