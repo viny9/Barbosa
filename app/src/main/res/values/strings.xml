@@ -18,4 +18,11 @@
 
     <!-- Tela Barbeiro   -->
     <string name="barber_profile_img">Image de perfil do barbeiro</string>
+  
+    <!-- Tela Barbearia    -->
+    <string name="app_name">Barbosa</string>
+    <string name="cadastre_se">Cadastre-se</string>
+    <string name="barber_profile_img">Image de perfil do barbeiro</string>
+    <string name="barber_button">Agendar</string>
+    <string name="barbearia_equipe">Nossa equipe</string>
 </resources>
