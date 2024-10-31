@@ -1,4 +1,21 @@
 <resources>
-    <string name="app_name">Barbosa</string>
-    <string name="cadastre_se">Cadastre-se</string>
+    <!-- Tela Login -->
+    <string name="login_title">Barbosa</string>
+    <string name="login_button">Entrar</string>
+    <string name="login_email_input">Digite seu e-mail</string>
+    <string name="login_password_input">Digite sua senha</string>
+    <string name="login_link">Cadastre-se</string>
+
+    <!-- Tela Cadastro   -->
+    <string name="cadastro_title">FAÇA SEU CADASTRO</string>
+    <string name="cadastro_name_input">Nome completo</string>
+    <string name="cadastro_email_input">Digite seu e-mail</string>
+    <string name="cadastro_telefone_input">Número de telefone</string>
+    <string name="cadastro_senha_input">Digite sua senha</string>
+    <string name="cadastro_button">Cadastrar</string>
+    <string name="cadastro_texto_link">Já possui cadastro?</string>
+    <string name="cadastro_link">clique aqui para voltar</string>
+
+    <!-- Tela Barbeiro   -->
+    <string name="barber_profile_img">Image de perfil do barbeiro</string>
 </resources>
