@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="FAÇA SEU CADASTRO"
+            android:text="@string/cadastro_title"
             android:textColor="#000"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -39,8 +39,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="18dp"
+            android:autofillHints="no"
+            android:inputType="text"
             android:background="@drawable/rounded_edittext"
-            android:hint="Nome completo"
+            android:hint="@string/cadastro_name_input"
             android:padding="12dp" />
 
         <EditText
@@ -49,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="18dp"
             android:background="@drawable/rounded_edittext"
-            android:hint="Digite seu e-mail"
+            android:hint="@string/cadastro_email_input"
             android:padding="12dp" />
 
         <EditText
@@ -58,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="18dp"
             android:background="@drawable/rounded_edittext"
-            android:hint="Número de telefone"
+            android:hint="@string/cadastro_telefone_input"
             android:padding="12dp" />
 
         <EditText
@@ -67,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="18dp"
             android:background="@drawable/rounded_edittext"
-            android:hint="Digite sua senha"
+            android:hint="@string/cadastro_senha_input"
             android:inputType="textPassword"
             android:padding="12dp" />
 
@@ -79,7 +81,7 @@
             android:layout_marginBottom="80dp"
             android:background="@drawable/rounded_button"
             android:padding="10dp"
-            android:text="Entrar"
+            android:text="@string/cadastro_button"
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
@@ -88,7 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Já possui cadastro?"
+            android:text="@string/cadastro_texto_link"
             android:textColor="#000000"
             android:textSize="14sp" />
 
@@ -97,7 +99,7 @@
             android:id="@+id/voltarLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="clique aqui para voltar"
+            android:text="@string/cadastro_link"
             android:textColor="@android:color/holo_blue_dark"
             android:clickable="true"
             android:textSize="16sp"

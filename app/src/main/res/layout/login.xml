@@ -31,19 +31,23 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:gravity="center"
-            android:text="BARBOSSA"
+            android:text="@string/login_title"
             android:textColor="#333333"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="BARBOSSA" />
 
         <EditText
             android:id="@+id/loginEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
+            android:inputType="textEmailAddress"
             android:background="@drawable/rounded_edittext"
-            android:hint="Digite seu e-mail"
-            android:padding="12dp" />
+            android:hint="@string/login_email_input"
+            android:padding="12dp"
+            android:importantForAutofill="no"
+            tools:hint="Digite seu e-mail" />
 
         <EditText
             android:id="@+id/loginSenha"
@@ -51,9 +55,11 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:background="@drawable/rounded_edittext"
-            android:hint="Digite sua senha"
+            android:hint="@string/login_password_input"
+            android:importantForAutofill="no"
             android:inputType="textPassword"
-            android:padding="12dp" />
+            android:padding="12dp"
+            tools:hint="Digite sua senha" />
 
         <Button
             android:id="@+id/btnLogin"
@@ -63,9 +69,10 @@
             android:background="@drawable/rounded_button"
             android:onClick="autenticar"
             android:padding="10dp"
-            android:text="Entrar"
+            android:text="@string/login_button"
             android:textColor="#FFFFFF"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="Entrar" />
 
         <TextView
             android:id="@+id/cadastroLink"
@@ -75,10 +82,9 @@
             android:minWidth="48dp"
             android:minHeight="48dp"
             android:padding="16dp"
-            android:text="Cadastre-se"
             android:textColor="@android:color/holo_blue_dark"
-            android:textSize="16sp" />
-
+            android:textSize="16sp"
+            tools:text="@string/login_link" />
 
         <TextView
             android:id="@+id/alertaLogin"
