@@ -2,60 +2,57 @@ package com.example.barbosa;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 public class Login extends Activity {
+    private EditText email;
+    private EditText senha;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        TextView cadastroLink = findViewById(R.id.cadastroLink);
-        cadastroLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent cadastro = new Intent(Login.this, Cadastro.class);
-                startActivity(cadastro);
-            }
-        });
+        email = findViewById(R.id.loginEmail);
+        senha = findViewById(R.id.loginSenha);
+        Button btnLogin = findViewById(R.id.btnLogin);
+        TextView linkCadastro = findViewById(R.id.cadastroLink);
 
+        btnLogin.setOnClickListener(v -> autenticarUsuario());
 
-        Button btnEntrar = findViewById(R.id.btnLogin);
-        btnEntrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                autenticar(v);
-            }
+        linkCadastro.setOnClickListener(v -> {
+            Intent cadastroIntent = new Intent(Login.this, Cadastro.class);
+            startActivity(cadastroIntent);
         });
     }
 
-    public void autenticar(View view) {
-        EditText login = findViewById(R.id.loginEmail);
-        EditText senha = findViewById(R.id.loginSenha);
+    private void autenticarUsuario() {
+        String emailStr = email.getText().toString().trim();
+        String senhaStr = senha.getText().toString().trim();
 
-        if (login.getText().toString().isEmpty() || senha.getText().toString().isEmpty()) {
-            TextView erro = findViewById(R.id.alertaLogin);
-            erro.setText("Por favor, preencha todos os campos.");
+        if (emailStr.isEmpty() || senhaStr.isEmpty()) {
+            Toast.makeText(this, "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        LoginVO loginvo = new LoginVO();
-        loginvo.setLogin(login.getText().toString());
-        loginvo.setSenha(senha.getText().toString());
+        SharedPreferences sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE);
+        String storedEmail = sharedPreferences.getString("user_email", null);
+        String storedSenha = sharedPreferences.getString("user_senha", null);
 
-        if (loginvo.getLogin().equals("phdeoliveirra@gmail.com") && loginvo.getSenha().equals("980428")) {
-            Intent home = new Intent(this, Barbearia.class);
-            startActivity(home);
+        if (emailStr.equals(storedEmail) && senhaStr.equals(storedSenha)) {
+            Toast.makeText(this, "Login realizado com sucesso!", Toast.LENGTH_SHORT).show();
+            Intent mainIntent = new Intent(Login.this, Home.class);
+            startActivity(mainIntent);
+            finish();
         } else {
-            TextView erro = findViewById(R.id.alertaLogin);
-            erro.setText("Erro de autenticação. Verifique seus dados.");
+            Toast.makeText(this, "Email ou senha incorretos", Toast.LENGTH_SHORT).show();
         }
     }
 }

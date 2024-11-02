@@ -1,44 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="#f5f5f5"
+    tools:context=".Home">
 
-    <!-- Título da Home -->
     <TextView
         android:id="@+id/tvHello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Olá, Barbosa"
-        android:textSize="18sp"
+        android:text="Barbossa"
+        android:textColor="#333333"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginStart="20px"
+        android:layout_marginEnd="20px"
+        android:layout_marginTop="10px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Barra de Busca -->
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20px"
+        android:layout_marginEnd="20px"
+        android:layout_marginTop="10px"
+        android:text="Quinta-feira, 31 out 2024"
+        android:textColor="#ff0099cc"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvHello" />
+
     <EditText
         android:id="@+id/searchBarber"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Encontre uma barbearia"
-        android:padding="12dp"
+        android:layout_marginStart="20px"
+        android:layout_marginEnd="20px"
+        android:layout_marginTop="30px"
         android:background="@drawable/rounded_edittext"
+        android:drawableEnd="@drawable/search"
+        android:drawablePadding="10dp"
+        android:hint="Encontre uma barbearia"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textAlignment="viewStart"
+        android:textColor="#333333"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvHello"
-        app:layout_constraintWidth_percent="0.8"/>
+        app:layout_constraintTop_toBottomOf="@id/tvDate"
+        app:layout_constraintWidth_percent="0.9" />
 
-    <!-- Bottom Navigation View -->
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20px"
+        android:layout_marginTop="30px"
+        android:text="Estabelecimentos"
+        android:textColor="#333333"
+        android:textDirection="locale"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchBarber" />
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="20px"
+        android:layout_marginEnd="20px"
+        android:layout_marginTop="10px"
+        android:background="#90CFCFCF"
+        android:columnCount="3"
+        android:rowCount="3"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView">
+
+        <LinearLayout
+            android:id="@+id/userIcon"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="Ícone do estabelecimento"
+                android:src="@drawable/barbearia" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:text="Don Alcides"
+                android:textColor="#333333"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </GridLayout>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
-        app:menu="@menu/bottom_navigation_menu"
+        android:background="#142157"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/color_selector"
+        app:itemTextAppearanceActive="@style/BottomNavTextStyle"
+        app:itemTextAppearanceInactive="@style/BottomNavTextStyle"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:menu="@menu/bottom_navigation_menu" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

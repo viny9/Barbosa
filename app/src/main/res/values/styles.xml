@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Estilo para o texto do BottomNavigationView -->
+    <style name="BottomNavTextStyle" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">12sp</item> <!-- Ajuste o tamanho conforme necessário -->
+    </style>
+</resources>
