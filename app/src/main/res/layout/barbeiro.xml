@@ -45,7 +45,7 @@
             tools:text="Cabelo, Barba e Sobrancelhas" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnAgendar"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:textColor="@color/white"
