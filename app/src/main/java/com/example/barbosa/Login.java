@@ -10,6 +10,11 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.example.barbosa.domain.Auth.Dtos.LoginDTO;
+import com.example.barbosa.domain.Auth.AuthService;
+
+import java.io.IOException;
+
 public class Login extends Activity {
 
     @Override
@@ -31,31 +36,33 @@ public class Login extends Activity {
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                autenticar(v);
+                try {
+                    login(v);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }
 
-    public void autenticar(View view) {
-        EditText login = findViewById(R.id.loginEmail);
-        EditText senha = findViewById(R.id.loginSenha);
+    public void login(View view) throws IOException {
+        EditText email = findViewById(R.id.loginEmail);
+        EditText password = findViewById(R.id.loginSenha);
 
-        if (login.getText().toString().isEmpty() || senha.getText().toString().isEmpty()) {
+        if (email.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
             TextView erro = findViewById(R.id.alertaLogin);
             erro.setText("Por favor, preencha todos os campos.");
             return;
         }
 
-        LoginVO loginvo = new LoginVO();
-        loginvo.setLogin(login.getText().toString());
-        loginvo.setSenha(senha.getText().toString());
+        LoginDTO loginDTO = new LoginDTO(email.getText().toString(), password.getText().toString());
+        String res = new AuthService().login(loginDTO);
 
-        if (loginvo.getLogin().equals("phdeoliveirra@gmail.com") && loginvo.getSenha().equals("980428")) {
-            Intent home = new Intent(this, Barbearia.class);
-            startActivity(home);
-        } else {
-            TextView erro = findViewById(R.id.alertaLogin);
-            erro.setText("Erro de autenticação. Verifique seus dados.");
-        }
+//            Intent home = new Intent(this, Barbearia.class);
+//            startActivity(home);
+//        } else {
+//            TextView erro = findViewById(R.id.alertaLogin);
+//            erro.setText("Erro de autenticação. Verifique seus dados.");
+//        }
     }
 }

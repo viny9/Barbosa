@@ -1,4 +1,4 @@
-package com.example.barbosa.domain;
+package com.example.barbosa.domain.Barber;
 
 public class Barber {
     private String name;

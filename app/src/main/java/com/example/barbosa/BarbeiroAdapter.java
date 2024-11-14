@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.barbosa.domain.Barber;
+import com.example.barbosa.domain.Barber.Barber;
 
 import java.util.List;
 

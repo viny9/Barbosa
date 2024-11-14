@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.barbosa.domain.Barber;
+import com.example.barbosa.domain.Barber.Barber;
 
 import java.util.ArrayList;
 import java.util.List;

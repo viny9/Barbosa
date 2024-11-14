@@ -9,7 +9,7 @@ import android.content.Intent;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.barbosa.domain.Barber;
+import com.example.barbosa.domain.Barber.Barber;
 
 public class BarbeiroViewHolder extends RecyclerView.ViewHolder {
     public BarbeiroViewHolder(View itemView) {
