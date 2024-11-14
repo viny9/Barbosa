@@ -1,6 +1,6 @@
 <resources>
     <!-- Tela Login -->
-    <string name="login_title">Barbosa</string>
+    <string name="login_title">Barbossa</string>
     <string name="login_button">Entrar</string>
     <string name="login_email_input">Digite seu e-mail</string>
     <string name="login_password_input">Digite sua senha</string>
@@ -32,6 +32,9 @@
     <string name="telefone_input">Número de telefone</string>
     <string name="senha_input">Digite sua senha</string>
     <string name="excluir_button">Excluir conta</string>
+
+    <!-- Tela Home -->
+    <string name="empresas">Estabelecimentos</string>
 
     <!-- Adicione a linha abaixo -->
     <string name="back_button_description">Voltar</string>

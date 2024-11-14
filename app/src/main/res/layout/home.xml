@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,23 +11,27 @@
         android:id="@+id/tvHello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10px"
+        android:layout_marginEnd="16dp"
         android:text="Barbossa"
-        android:textColor="#333333"
+        android:textColor="#ffffff"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_marginStart="20px"
-        android:layout_marginEnd="20px"
-        android:layout_marginTop="10px"
+        android:shadowColor="#80000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20px"
-        android:layout_marginEnd="20px"
-        android:layout_marginTop="10px"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:text="Quinta-feira, 31 out 2024"
         android:textColor="#ff0099cc"
         android:textSize="14sp"
@@ -39,9 +42,9 @@
         android:id="@+id/searchBarber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20px"
-        android:layout_marginEnd="20px"
-        android:layout_marginTop="30px"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_edittext"
         android:drawableEnd="@drawable/search"
         android:drawablePadding="10dp"
@@ -56,12 +59,14 @@
         app:layout_constraintWidth_percent="0.9" />
 
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20px"
-        android:layout_marginTop="30px"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
         android:text="Estabelecimentos"
         android:textColor="#333333"
         android:textDirection="locale"
@@ -70,47 +75,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchBarber" />
 
+
     <GridLayout
         android:id="@+id/gridLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="20px"
-        android:layout_marginEnd="20px"
-        android:layout_marginTop="10px"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
         android:background="#90CFCFCF"
-        android:columnCount="3"
-        android:rowCount="3"
+        android:columnCount="4"
+        android:rowCount="4"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView">
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        android:padding="10dp"> <!-- Isso adiciona um espaço interno ao GridLayout -->
 
-        <LinearLayout
-            android:id="@+id/userIcon"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:orientation="vertical">
+        <include layout="@layout/company_account" />
+        <include layout="@layout/company_account" />
+        <include layout="@layout/company_account" />
+        <include layout="@layout/company_account" />
+        <include layout="@layout/company_account" />
+        <include layout="@layout/company_account" /><include layout="@layout/company_account" />
+        <include layout="@layout/company_account" />
 
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:contentDescription="Ícone do estabelecimento"
-                android:src="@drawable/barbearia" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:gravity="center"
-                android:text="Don Alcides"
-                android:textColor="#333333"
-                android:textSize="16sp" />
-        </LinearLayout>
+
     </GridLayout>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -118,9 +111,9 @@
         android:layout_height="wrap_content"
         android:background="#142157"
         app:itemIconTint="@color/white"
-        app:itemTextColor="@color/color_selector"
         app:itemTextAppearanceActive="@style/BottomNavTextStyle"
         app:itemTextAppearanceInactive="@style/BottomNavTextStyle"
+        app:itemTextColor="@color/color_selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_navigation_menu" />
 
