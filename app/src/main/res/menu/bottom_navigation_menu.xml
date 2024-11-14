@@ -1,16 +1,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_home"
-        android:icon="@drawable/baseline_home_24"
-    android:title="Home" />
+        android:icon="@drawable/home__1_"
+        android:title="Início"
+        android:color="#D9142157" />
+
 
     <item
-        android:id="@+id/nav_search"
-        android:icon="@drawable/baseline_search_24"
-    android:title="Search" />
-
-    <item
-        android:id="@+id/nav_profile"
-        android:icon="@drawable/outline_account_circle_24"
-    android:title="Profile" />
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/logout__1_"
+        android:title="Sair"
+        android:color="#D9142157" />
 </menu>

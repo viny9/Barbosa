@@ -1,12 +1,12 @@
 <resources>
     <!-- Tela Login -->
-    <string name="login_title">Barbosa</string>
+    <string name="login_title">Barbossa</string>
     <string name="login_button">Entrar</string>
     <string name="login_email_input">Digite seu e-mail</string>
     <string name="login_password_input">Digite sua senha</string>
-    <string name="login_link">Cadastre-se</string>
+    <string name="login_link">Não possui conta? Cadastre-se</string>
 
-    <!-- Tela Cadastro   -->
+    <!-- Tela Cadastro -->
     <string name="cadastro_title">FAÇA SEU CADASTRO</string>
     <string name="cadastro_name_input">Nome completo</string>
     <string name="cadastro_email_input">Digite seu e-mail</string>
@@ -16,12 +16,26 @@
     <string name="cadastro_texto_link">Já possui cadastro?</string>
     <string name="cadastro_link">clique aqui para voltar</string>
 
-    <!-- Tela Barbeiro   -->
+    <!-- Tela Barbeiro -->
     <string name="barber_profile_img">Image de perfil do barbeiro</string>
-  
-    <!-- Tela Barbearia    -->
+
+    <!-- Tela Barbearia -->
     <string name="app_name">Barbosa</string>
     <string name="cadastre_se">Cadastre-se</string>
     <string name="barber_button">Agendar</string>
     <string name="barbearia_equipe">Nossa equipe</string>
+
+    <!-- Tela Minha conta -->
+    <string name="my_account">Minha conta</string>
+    <string name="name_input">Nome completo</string>
+    <string name="email_input">Digite seu e-mail</string>
+    <string name="telefone_input">Número de telefone</string>
+    <string name="senha_input">Digite sua senha</string>
+    <string name="excluir_button">Excluir conta</string>
+
+    <!-- Tela Home -->
+    <string name="empresas">Estabelecimentos</string>
+
+    <!-- Adicione a linha abaixo -->
+    <string name="back_button_description">Voltar</string>
 </resources>

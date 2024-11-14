@@ -1,13 +1,9 @@
 package com.example.barbosa;
 
 public class CadastroVO {
-
     private String nome;
-
     private String email;
-
-    private Integer telefone;
-
+    private String telefone; // Altere para String
     private String senha;
 
     public String getNome() {
@@ -18,14 +14,6 @@ public class CadastroVO {
         this.nome = nome;
     }
 
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -34,11 +22,19 @@ public class CadastroVO {
         this.email = email;
     }
 
-    public Integer getTelefone() {
+    public String getTelefone() { // Altere o tipo de retorno para String
         return telefone;
     }
 
-    public void setTelefone(Integer telefone) {
+    public void setTelefone(String telefone) { // Altere o parâmetro para String
         this.telefone = telefone;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }
