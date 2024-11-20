@@ -8,7 +8,7 @@ public class LoginDTO {
         this.email = email;
         this.password = password;
     }
-//Mudar pra o nome pra Logindto
+
     public String getEmail() {
         return email;
     }

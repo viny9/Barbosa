@@ -10,10 +10,12 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.example.barbosa.domain.Auth.Dtos.LoginDTO;
 import com.example.barbosa.domain.Auth.AuthService;
+import com.example.barbosa.domain.Auth.Dtos.LoginDTO;
+import com.example.barbosa.domain.Auth.Dtos.LoginResponseDTO;
 
 import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
 public class Login extends Activity {
 
@@ -31,8 +33,8 @@ public class Login extends Activity {
             }
         });
 
-
         Button btnEntrar = findViewById(R.id.btnLogin);
+
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,7 +47,7 @@ public class Login extends Activity {
         });
     }
 
-    public void login(View view) throws IOException {
+    private void login(View view) throws IOException {
         EditText email = findViewById(R.id.loginEmail);
         EditText password = findViewById(R.id.loginSenha);
 
@@ -56,13 +58,17 @@ public class Login extends Activity {
         }
 
         LoginDTO loginDTO = new LoginDTO(email.getText().toString(), password.getText().toString());
-        String res = new AuthService().login(loginDTO);
+        CompletableFuture<LoginResponseDTO> loginResponseDto = new AuthService().login(loginDTO);
 
-//            Intent home = new Intent(this, Barbearia.class);
-//            startActivity(home);
-//        } else {
-//            TextView erro = findViewById(R.id.alertaLogin);
-//            erro.setText("Erro de autenticação. Verifique seus dados.");
-//        }
+        loginResponseDto.whenComplete((res, err) -> {
+            if (err != null) {
+                TextView erro = findViewById(R.id.alertaLogin);
+                erro.setText("Erro de autenticação. Verifique seus dados.");
+                return;
+            }
+
+            Intent home = new Intent(this, Home.class);
+            startActivity(home);
+        });
     }
 }
