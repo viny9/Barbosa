@@ -1,6 +1,5 @@
 package com.example.barbosa.utils;
 
-import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 
 import okhttp3.MediaType;
@@ -13,12 +12,25 @@ public class HttpClient<T> {
     private final String baseUrl = "https://barber-shop-backend-eight.vercel.app";
     private final OkHttpClient httpClient = new OkHttpClient();
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+    private String token = null;
+
+    public HttpClient() {
+    }
+
+    public HttpClient(String token) {
+        this.token = "Bearer " + token;
+    }
 
     public CompletableFuture<Response> get(String path) {
-        Request request = new Request.Builder()
+        Request.Builder requestBuild = new Request.Builder()
                 .url(baseUrl + path)
-                .get()
-                .build();
+                .get();
+
+        if (token != null) {
+            requestBuild.header("Authorization", token);
+        }
+
+        Request request = requestBuild.build();
 
         CallbackResponse callbackResponse = new CallbackResponse();
         httpClient.newCall(request).enqueue(callbackResponse);
@@ -30,10 +42,15 @@ public class HttpClient<T> {
         String jsonBody = JsonConverter.convert(obj);
         RequestBody body = RequestBody.create(jsonBody, JSON);
 
-        Request request = new Request.Builder()
+        Request.Builder requestBuild = new Request.Builder()
                 .url(baseUrl + path)
-                .post(body)
-                .build();
+                .post(body);
+
+        if (token != null) {
+            requestBuild.header("Authorization", token);
+        }
+
+        Request request = requestBuild.build();
 
         CallbackResponse callbackResponse = new CallbackResponse();
         httpClient.newCall(request).enqueue(callbackResponse);
@@ -45,10 +62,16 @@ public class HttpClient<T> {
         String jsonBody = JsonConverter.convert(obj);
         RequestBody body = RequestBody.create(jsonBody, JSON);
 
-        Request request = new Request.Builder()
+        Request.Builder requestBuild = new Request.Builder()
+
                 .url(baseUrl + path)
-                .put(body)
-                .build();
+                .put(body);
+
+        if (token != null) {
+            requestBuild.header("Authorization", token);
+        }
+
+        Request request = requestBuild.build();
 
         CallbackResponse callbackResponse = new CallbackResponse();
         httpClient.newCall(request).enqueue(callbackResponse);
@@ -57,10 +80,15 @@ public class HttpClient<T> {
     }
 
     public CompletableFuture<Response> delete(String path) {
-        Request request = new Request.Builder()
+        Request.Builder requestBuild = new Request.Builder()
                 .url(baseUrl + path)
-                .delete()
-                .build();
+                .delete();
+
+        if (token != null) {
+            requestBuild.header("Authorization", token);
+        }
+
+        Request request = requestBuild.build();
 
         CallbackResponse callbackResponse = new CallbackResponse();
         httpClient.newCall(request).enqueue(callbackResponse);
