@@ -2,13 +2,17 @@ package com.example.barbosa;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.*;
 import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.TimePicker;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+
+import com.example.barbosa.domain.Auth.AgendamentoService;
+import com.example.barbosa.domain.Auth.Dtos.AgendamentoDTO;
+
+import java.util.concurrent.CompletableFuture;
+
+import okhttp3.Response;
 
 public class Agendamento extends Activity {
 
@@ -33,14 +37,30 @@ public class Agendamento extends Activity {
     }
 
     private void confirmarAgendamento() {
-        int dia = datePicker.getDayOfMonth();
-        int mes = datePicker.getMonth() + 1;
-        int ano = datePicker.getYear();
-        int hora = timePicker.getHour();
-        int minuto = timePicker.getMinute();
+        int day = datePicker.getDayOfMonth();
+        int month = datePicker.getMonth() + 1;
+        int year = datePicker.getYear();
+        int hour = timePicker.getHour();
+        int minute = timePicker.getMinute();
 
-        String agendamento = "Agendado para: " + dia + "/" + mes + "/" + ano + " às " + hora + ":" + minuto;
-        Toast.makeText(this, agendamento, Toast.LENGTH_SHORT).show();
-        // Aqui você pode implementar a lógica para salvar o agendamento no servidor
+        String date = String.format("%04d-%02d-%02dT%02d:%02d:00.000Z", year, month, day, hour, minute);
+        // Ajuste os valores fixos de `userId` e `barberId` conforme necessário
+        AgendamentoDTO agendamentoDTO = new AgendamentoDTO(1, 1, date, date, date);
+
+        AgendamentoService service = new AgendamentoService();
+        CompletableFuture<Response> response = service.agendar(agendamentoDTO);
+
+        response.whenComplete((res, err) -> {
+            if (err != null) {
+                runOnUiThread(() -> Toast.makeText(this, "Erro ao agendar: " + err.getMessage(), Toast.LENGTH_SHORT).show());
+                return;
+            }
+
+            if (res.code() == 200) {
+                runOnUiThread(() -> Toast.makeText(this, "Agendamento realizado com sucesso!", Toast.LENGTH_SHORT).show());
+            } else {
+                runOnUiThread(() -> Toast.makeText(this, "Erro ao agendar. Tente novamente.", Toast.LENGTH_SHORT).show());
+            }
+        });
     }
 }
