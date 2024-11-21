@@ -2,8 +2,6 @@ package com.example.barbosa.utils;
 
 import androidx.annotation.NonNull;
 
-import com.example.barbosa.models.ResponseError;
-
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 
