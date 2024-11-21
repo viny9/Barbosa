@@ -51,6 +51,7 @@
             android:src="@drawable/location_icon" />
 
         <TextView
+            android:id="@+id/barberShopLocation"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"

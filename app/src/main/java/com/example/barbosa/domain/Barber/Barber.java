@@ -1,27 +1,28 @@
 package com.example.barbosa.domain.Barber;
 
+import com.example.barbosa.domain.Barber.Dtos.BarberDTO;
+import com.example.barbosa.domain.User.User;
+
 public class Barber {
-    private String name;
-    private String specialities;
+    private int barberId;
+    private int userId;
+    private User user;
 
-    public Barber(String specialities, String name) {
-        this.specialities = specialities;
-        this.name = name;
+    public Barber(BarberDTO dto) {
+        this.barberId = dto.getId();
+        this.userId = dto.getUserId();
+        this.user = dto.getUser();
     }
 
-    public String getName() {
-        return name;
+    public int getBarberId() {
+        return barberId;
     }
 
-    public String getSpecialities() {
-        return specialities;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSpecialities(String specialities) {
-        this.specialities = specialities;
+    public User getUser() {
+        return user;
     }
 }

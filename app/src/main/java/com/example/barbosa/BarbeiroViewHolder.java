@@ -18,11 +18,9 @@ public class BarbeiroViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(Barber barber) {
         TextView barberName = itemView.findViewById(R.id.barberName);
-        TextView barberSpecialities = itemView.findViewById(R.id.barberSpecialities);
         Button btnAgendar = itemView.findViewById(R.id.btnAgendar);
 
-        barberName.setText(barber.getName());
-        barberSpecialities.setText(barber.getSpecialities());
+        barberName.setText(barber.getUser().getName());
 
         btnAgendar.setOnClickListener(new View.OnClickListener() {
             @Override

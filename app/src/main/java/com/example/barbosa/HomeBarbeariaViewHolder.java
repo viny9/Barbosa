@@ -24,6 +24,7 @@ public class HomeBarbeariaViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), Barbearia.class);
+                intent.putExtra("id", barbearia.getId() + "");
                 v.getContext().startActivity(intent);
             }
         });

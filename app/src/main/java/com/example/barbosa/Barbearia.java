@@ -1,16 +1,15 @@
 package com.example.barbosa;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.barbosa.domain.Barber.Barber;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.barbosa.domain.BarberShop.BarberShopService;
 
 public class Barbearia extends Activity {
     @Override
@@ -18,16 +17,47 @@ public class Barbearia extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.barbearia);
 
-        List<Barber> barbeiros = new ArrayList<Barber>();
-        barbeiros.add(new Barber("barbar, cabelo", "Teste1"));
-        barbeiros.add(new Barber("barbar, cabelo", "Teste2"));
-        barbeiros.add(new Barber("barbar, cabelo, sobrancelhas", "Teste3"));
+        Bundle intent = getIntent().getExtras();
+        String id = intent.getString("id");
 
-        RecyclerView recicleView = findViewById(R.id.barbersList);
-        recicleView.setLayoutManager(new LinearLayoutManager(this));
+        getBarberShopInfos(id);
+        getBarberShopBarbers(id);
+    }
 
-        BarbeiroAdapter adapter = new BarbeiroAdapter(barbeiros);
-        recicleView.setAdapter(adapter);
+    private void getBarberShopInfos(String id) {
+        String token = getToken();
+        new BarberShopService(token).getBarberShopById(id).whenComplete((res, err) -> {
+            runOnUiThread(() -> {
+                TextView barberShopName = findViewById(R.id.baberShopName);
+                TextView barberShopLocation = findViewById(R.id.barberShopLocation);
 
+                barberShopName.setText(res.getName());
+                barberShopLocation.setText(res.getLocation());
+            });
+        });
+    }
+
+    private void getBarberShopBarbers(String id) {
+        String token = getToken();
+        new BarberShopService(token).getBarberShopBarbersById(id).whenComplete((res, err) -> {
+            if (err != null) {
+                err.printStackTrace();
+                return;
+            }
+
+            runOnUiThread(() -> {
+                RecyclerView recicleView = findViewById(R.id.barbersList);
+                recicleView.setLayoutManager(new LinearLayoutManager(this));
+
+                BarbeiroAdapter adapter = new BarbeiroAdapter(res);
+                recicleView.setAdapter(adapter);
+            });
+        });
+    }
+
+    private String getToken() {
+        SharedPreferences sharedPreferences = getSharedPreferences("token_save", MODE_PRIVATE);
+        String token = sharedPreferences.getString("token", null);
+        return token;
     }
 }
