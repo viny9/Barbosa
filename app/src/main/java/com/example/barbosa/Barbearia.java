@@ -56,7 +56,7 @@ public class Barbearia extends Activity {
     }
 
     private String getToken() {
-        SharedPreferences sharedPreferences = getSharedPreferences("token_save", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("user", MODE_PRIVATE);
         String token = sharedPreferences.getString("token", null);
         return token;
     }

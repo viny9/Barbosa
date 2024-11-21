@@ -26,6 +26,7 @@ public class BarbeiroViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), Agendamento.class);
+                intent.putExtra("barberId", barber.getBarberId() + "");
                 v.getContext().startActivity(intent);
             }
         });

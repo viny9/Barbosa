@@ -68,10 +68,11 @@ public class Login extends Activity {
                 return;
             }
 
-            SharedPreferences sharedPreferences = getSharedPreferences("token_save", MODE_PRIVATE);
+            SharedPreferences sharedPreferences = getSharedPreferences("user", MODE_PRIVATE);
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("token", res.getAccessToken());
+            editor.putString("id", res.getUser().getId() + "");
             editor.apply();
 
             Intent home = new Intent(this, Home.class);
