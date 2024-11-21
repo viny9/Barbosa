@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import com.example.barbosa.domain.Auth.AgendamentoService;
 import com.example.barbosa.domain.Auth.Dtos.AgendamentoDTO;
 
+import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 
 import okhttp3.Response;
@@ -52,7 +53,7 @@ public class Agendamento extends Activity {
         timePicker.setHour(timePicker.getHour() + 1);
         String endDate = formatDate(datePicker, timePicker);
 
-        AgendamentoDTO agendamentoDTO = new AgendamentoDTO(barberId, userId, startDate, startDate, endDate);
+        AgendamentoDTO agendamentoDTO = new AgendamentoDTO(userId, barberId, startDate, startDate, endDate);
 
         String token = getToken();
         AgendamentoService service = new AgendamentoService(token);
