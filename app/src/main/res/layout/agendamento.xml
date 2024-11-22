@@ -40,4 +40,14 @@
         android:backgroundTint="#5FFFFFFF"
         android:text="Confirmar Agendamento"
         android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/alertaAgendamento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="#FF0000"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
 </LinearLayout>

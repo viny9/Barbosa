@@ -1,6 +1,7 @@
 package com.example.barbosa;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +15,6 @@ import androidx.annotation.Nullable;
 import com.example.barbosa.domain.Auth.AgendamentoService;
 import com.example.barbosa.domain.Auth.Dtos.AgendamentoDTO;
 
-import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 
 import okhttp3.Response;
@@ -30,7 +30,7 @@ public class Agendamento extends Activity {
         setContentView(R.layout.agendamento);
 
         Bundle intent = getIntent().getExtras();
-        String barberId = intent.getString("barberId");
+        String barberId = intent != null ? intent.getString("barberId") : null;
 
         SharedPreferences sharedPreferences = getSharedPreferences("user", MODE_PRIVATE);
         String userId = sharedPreferences.getString("id", null);
@@ -42,7 +42,11 @@ public class Agendamento extends Activity {
         btnConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                confirmarAgendamento(Integer.parseInt(barberId), Integer.parseInt(userId));
+                if (barberId != null && userId != null) {
+                    confirmarAgendamento(Integer.parseInt(barberId), Integer.parseInt(userId));
+                } else {
+                    Toast.makeText(Agendamento.this, "Erro ao recuperar dados do usuário ou barbeiro.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -61,15 +65,20 @@ public class Agendamento extends Activity {
 
         response.whenComplete((res, err) -> {
             if (err != null) {
-                runOnUiThread(() -> Toast.makeText(this, "Erro ao agendar: " + err.getMessage(), Toast.LENGTH_SHORT).show());
+                runOnUiThread(() -> {
+                    Toast.makeText(this, "Erro ao agendar: " + err.getMessage(), Toast.LENGTH_SHORT).show();
+                });
                 return;
             }
 
-            if (res.code() == 200) {
-                runOnUiThread(() -> Toast.makeText(this, "Agendamento realizado com sucesso!", Toast.LENGTH_SHORT).show());
-            } else {
-                runOnUiThread(() -> Toast.makeText(this, "Erro ao agendar. Tente novamente.", Toast.LENGTH_SHORT).show());
-            }
+            runOnUiThread(() -> {
+                if (res.code() == 201) {
+                    Toast.makeText(this, "Agendamento realizado com sucesso!", Toast.LENGTH_SHORT).show();
+                    redirecionarParaHome();
+                } else {
+                    Toast.makeText(this, "Erro ao agendar. Tente novamente.", Toast.LENGTH_SHORT).show();
+                }
+            });
         });
     }
 
@@ -85,7 +94,13 @@ public class Agendamento extends Activity {
 
     private String getToken() {
         SharedPreferences sharedPreferences = getSharedPreferences("user", MODE_PRIVATE);
-        String token = sharedPreferences.getString("token", null);
-        return token;
+        return sharedPreferences.getString("token", null);
+    }
+
+    private void redirecionarParaHome() {
+        Intent intent = new Intent(this, Home.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 }

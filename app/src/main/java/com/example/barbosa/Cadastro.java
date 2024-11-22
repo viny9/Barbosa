@@ -22,7 +22,6 @@ public class Cadastro extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cadastro);
 
-        // Botão para enviar os dados de cadastro
         Button btnCadastrar = findViewById(R.id.btnLogin);
         btnCadastrar.setText("Cadastrar");
 
@@ -37,12 +36,12 @@ public class Cadastro extends Activity {
             }
         });
 
-        // Link para voltar ao login
+
         TextView voltarLogin = findViewById(R.id.voltarLogin);
         voltarLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish(); // Voltar para a tela de login
+                finish();
             }
         });
     }
@@ -53,7 +52,6 @@ public class Cadastro extends Activity {
         EditText telefone = findViewById(R.id.etTelefone);
         EditText senha = findViewById(R.id.loginSenha);
 
-        // Validação básica
         if (nome.getText().toString().isEmpty() || email.getText().toString().isEmpty()
                 || telefone.getText().toString().isEmpty() || senha.getText().toString().isEmpty()) {
             TextView erro = findViewById(R.id.alertaCadastro);
@@ -83,7 +81,7 @@ public class Cadastro extends Activity {
             runOnUiThread(() -> {
                 TextView sucesso = findViewById(R.id.alertaCadastro);
                 sucesso.setText("Cadastro realizado com sucesso!");
-                finish(); // Voltar para o login
+                finish();
             });
         });
     }
